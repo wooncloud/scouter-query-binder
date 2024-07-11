@@ -13,8 +13,7 @@
   },
   "content_scripts": [],
   "icons": {
-    "32": "assets/icons/icon32.png",
-    "192": "assets/icons/icon192.png"
+    "32": "assets/icons/icon32.png"
   },
   "optional_host_permissions": [
     "*://*/*"
