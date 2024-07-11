@@ -12,9 +12,19 @@ let statusSetTimeoutAttr;
 
 document.addEventListener("DOMContentLoaded", () => {
     inputQueryEl.focus();
+    btnResetEl.style.display = "none";
 });
 
 const queryParameterIndexReplace = () => {
+    if (!inputQueryEl.value) {
+        showStatus("쿼리를 입력하세요.");
+        return;
+    }
+    if (!inputValueEl.value) {
+        showStatus("값를 입력하세요.");
+        return;
+    }
+
     const idxParamsRegex = /@\{(\d+?)\}/i;
     let query = inputQueryEl.value;
     let value = inputValueEl.value
@@ -34,9 +44,12 @@ const queryParameterIndexReplace = () => {
         }
     } catch(e) {
         console.error(e);
+        showStatus("바인드 할 수 없습니다.");
         return;
     }
 
+    // 성공
+    query = query.replace(/(\n)\s{4,}/g, '$1  ');
     outputEl.textContent = query;
     hljs.highlightElement(outputEl);
     toggleOutput(true)
@@ -44,21 +57,15 @@ const queryParameterIndexReplace = () => {
 }
 
 /**
- * 
+ * 상태 메시지를 보여주는 함수
  * @param {*} msg 
  */
 const showStatus = (msg) => {
     const RESET_TIME = 2000;
-    if (msg !== lbStatusEl.innerText) {
+    if (msg !== lbStatusEl.innerText || !statusSetTimeoutAttr) {
+        clearTimeout(statusSetTimeoutAttr);
         lbStatusEl.innerText = msg;
         statusSetTimeoutAttr = setTimeout(() => {
-            lbStatusEl.innerText = "";
-            statusSetTimeoutAttr = null;
-        }, RESET_TIME);
-    } else {
-        statusSetTimeoutAttr = statusSetTimeoutAttr 
-            || (lbStatusEl.innerText = msg) 
-            && setTimeout(() => {
             lbStatusEl.innerText = "";
             statusSetTimeoutAttr = null;
         }, RESET_TIME);
@@ -74,10 +81,14 @@ const toggleOutput = (isResult) => {
         outputContainerEl.style.display = "";
         inputQueryEl.style.display = "none";
         inputValueEl.style.display = "none";
+        btnBindEl.style.display = "none";
+        btnResetEl.style.display = "";
     } else {
         outputContainerEl.style.display = "none";
         inputQueryEl.style.display = "";
         inputValueEl.style.display = "";
+        btnBindEl.style.display = "";
+        btnResetEl.style.display = "none";
     }
 };
 
@@ -94,6 +105,7 @@ btnCopyEl.addEventListener('click', () => {
 // 리셋 버튼 이벤트
 btnResetEl.addEventListener('click', () => {
     inputQueryEl.value = '';
+    inputValueEl.value = '';
     outputEl.textContent = '';
     toggleOutput(false);
 });    
