@@ -1,0 +1,23 @@
+{
+  "name": "scouter query binder",
+  "version": "1.0.0",
+  "author": "wooncloud",
+  "description": "스카우터 쿼리 바인더",
+  "background": {
+    "service_worker": "background/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": "assets/icons/icon32.png"
+  },
+  "content_scripts": [],
+  "icons": {
+    "32": "assets/icons/icon32.png",
+    "192": "assets/icons/icon192.png"
+  },
+  "optional_host_permissions": [
+    "*://*/*"
+  ],
+  "manifest_version": 3
+}

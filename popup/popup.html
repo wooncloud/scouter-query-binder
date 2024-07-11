@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/lib/atom-one-dark.min.css">
+	<link rel="stylesheet" href="/lib/default.min.css">
+	<script src="/lib/highlight.min.js"></script>
+	<link href="./popup.css" rel="stylesheet">
+	<script src="./popup.js" type="module" defer></script>
+	<title>scouter query binder</title>
+</head>
+
+<body>
+	<header>
+		<h2>scouter query binder</h2>
+		<a href="http://wooncloud.tistory.com" target="_blank" rel="noopener noreferrer">
+			개발자 블로그
+		</a>
+	</header>
+	<section>
+		<div>	
+			<textarea id="inputQuery" placeholder="쿼리를 입력하세요."></textarea>
+			<input type="text" id="inputValue" placeholder="값을 입력하세요.">
+			<pre id="outputContainer" style="display: none;">
+				<code id="output" class="language-sql"></code>
+			</pre>
+		</div>
+		<div>
+		</div>
+	</section>
+	<footer>
+		<div>
+			<input type="button" value="COPY" id="btnCopy">
+		</div>
+		<div>
+			<span id="lbStatus"></span>
+		</div>
+		<div>
+			<input type="button" value="CLEAR" id="btnReset">
+			<input type="button" value="BIND" id="btnBind">
+		</div>
+	</footer>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "scouter-query-binder",
+  "version": "1.0.0",
+  "description": "scouter query binder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wooncloud",
+  "license": "ISC"
+}
