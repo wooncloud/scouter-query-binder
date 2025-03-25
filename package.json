@@ -1,6 +1,6 @@
 {
   "name": "scouter-query-binder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "scouter query binder",
   "main": "index.js",
   "scripts": {

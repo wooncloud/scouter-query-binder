@@ -28,7 +28,7 @@ const queryParameterIndexReplace = () => {
     const idxParamsRegex = /@\{(\d+?)\}/i;
     let query = inputQueryEl.value;
     let value = inputValueEl.value
-        .replace(/\].+$/, ']') // ~~~ ms 제거
+        .replace(/\][\d\s,ms]+$/, ']') // ~~~ ms 제거
         .replace(/"/g, '\\\"') // 파라미터가 json인것 고려
         .replace(/\'/g, `"`) // 파라미터를 파싱 할 수 있도록 수정
     
